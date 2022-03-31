@@ -25,7 +25,7 @@ void Remove(struct Node** head_ref, struct Node* del){
         del->prev->next = del->next;
     free(del);
 }
-void RemoveNodeAtGivenPos(struct Node** head_ref, int n){
+void RemoveNode(struct Node** head_ref, int n){
     int i;
     if (*head_ref == NULL || n <= 0)
         return;
@@ -46,13 +46,14 @@ void printList(struct Node* node){
 int main(){
 	struct Node* head = NULL,*i;
     int n,data,key,j=1;
+    printf("Nhap day so: ");
     scanf("%d",&n);
     while(n-->0){
         scanf("%d",&data);
         head=push(head, data);
     }
     printList(head);
-    printf("Nhap so can xoa:\n");
+    printf("So can xoa:\n");
 	scanf("%d",&key);
     for(i=head; i!= NULL; i=i->next){
         if (i->data==key){
@@ -60,7 +61,7 @@ int main(){
         }
         j++;
     }
-    RemoveNodeAtGivenPos(&head,j);
+    RemoveNode(&head,j);
 	printList(head);
 	return 0;
 }
